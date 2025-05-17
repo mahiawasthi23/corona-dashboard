@@ -2,7 +2,6 @@
   position: relative;
   width: 100%;
   max-width: 550px;
-  margin-right: 0;
   margin-bottom: 20px;
 }
 
@@ -14,20 +13,24 @@
 }
 
 
-.country-dropdown{
+.country-dropdown {
   width: 100%;
-  padding: 10px 36px 10px 36px;
+  padding: 12px 40px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  appearance: none;
-  font-size: 16px;
   background-color: white;
+  font-size: 17px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
 }
 
 .icon {
   position: absolute;
   pointer-events: none;
   color: #666;
+  z-index: 10;
 }
 
 .search-icon {

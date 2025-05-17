@@ -33,7 +33,7 @@ const LineChartComponent = ({ data }) => {
     const [hoveredKey, setHoveredKey] = useState("cases");
 
     return (
-    <div style={{ width: "100%",  minHeight:  "280px"}}>
+    <div style={{ width: "100%",  height:  "100%"}}>
       <h3 style={{marginBottom: "5px", marginLeft: "25px" }}>LineChart</h3>
       <ResponsiveContainer  width="100%" height={250}>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
