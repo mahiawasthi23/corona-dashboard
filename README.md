@@ -22,8 +22,10 @@ This project is built using React.js and Vite. It allows users to view COVID-19 
 
 ## APIs Used
 
-- **COVID Data**: From disease.sh API (last 1500 days of data)
-- **Country List & Population**: From restcountries.com API
+- **COVID Data**: From  https://disease.sh/v3/covid-19/historical/{country}?lastdays=1500
+
+- **Country List & Population**: From GET https://restcountries.com/v3.1/all
+
 
 ## How to Run This Project
 
