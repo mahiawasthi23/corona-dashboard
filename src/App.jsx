@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { getCountries, getCovidHistory } from "./Api";
 import Country from "./Components/Country";
+import Cards from "./Components/Cards";
+import axios from "axios";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("us");
+  const [covidData, setCovidData] = useState(null);
+  const [chartData, setChartData] =useState([]);
   const [dateRange, setDateRange] = useState({
     start: "2022-10-24",
     end: "2023-12-08",
-  })
+  });
 
   const fetchCountries = async () => {
     const data = await getCountries();
@@ -39,6 +43,8 @@ function App() {
       const end = new Date(dateRange.end);
       return entryDate >= start && entryDate <=end;
     });
+
+    setChartData(filteredData);
       
     if(filteredData.lenght > 0) {
       const total = filteredData.reduce(
@@ -50,6 +56,20 @@ function App() {
         },
         {cases: 0, recovered: 0, deaths: 0}
       );
+
+      const PopulationRes = await axios.get(
+        `https://restcountries.com/v3.1/alpha/${code}`
+      );
+      const Population = PopulationRes.data[0]?.Population || 0;
+
+      setCovidData({
+        cases: total.cases,
+        recovered: total.recovered,
+        deaths: total,deaths,
+        Population: Population,
+      });
+    } else {
+      setCovidData(null);
     }
   };
 
@@ -60,7 +80,7 @@ function App() {
 
   useEffect(() => {
     if (selectedCountry) {
-       console.log("")
+        fetchCovidData(selectedCountry);
     }
   }, [selectedCountry, dateRange]);
 
@@ -80,7 +100,14 @@ function App() {
             }/>
           </div>
       </div>
-
+         {covidData && (
+           <> 
+             <Cards data={covidData} />
+             <div className="chart-container">
+               <h>Hello</h>
+             </div>
+           </>
+         )}
     </div>
   );
 }
