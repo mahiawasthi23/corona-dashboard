@@ -3,6 +3,7 @@ import { getCountries, getCovidHistory } from "./Api";
 import Country from "./Components/Country";
 import Cards from "./Components/Cards";
 import PieChartComponent from "./Components/PieChart";
+import LineChartComponent from "./Components/LineChart";
 import axios from "axios";
 
 function App() {
@@ -105,6 +106,7 @@ function App() {
            <> 
              <Cards data={covidData} />
              <div className="chart-container">
+                <LineChartComponent data={chartData} />
                 <PieChartComponent data={covidData} />
              </div>
            </>
