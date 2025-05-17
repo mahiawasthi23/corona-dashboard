@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { getCountries, getCovidHistory } from "./Api";
+import Country from "./Components/Country";
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("us");
+  const [dateRange, setDateRange] = useState({
+    start: "2022-10-24",
+    end: "2023-12-08",
+  })
 
   const fetchCountries = async () => {
     const data = await getCountries();
@@ -33,16 +39,48 @@ function App() {
       const end = new Date(dateRange.end);
       return entryDate >= start && entryDate <=end;
     });
+      
+    if(filteredData.lenght > 0) {
+      const total = filteredData.reduce(
+        (acc, curr) => {
+          acc.cases += curr.cases;
+          acc.recovered += curr.recovered;
+          acc.deaths =+ curr.deaths;
+          return acc;
+        },
+        {cases: 0, recovered: 0, deaths: 0}
+      );
+    }
   };
 
   useEffect(() => {
     fetchCountries();
-    fetchCovidData("us");
+    fetchCovidData(selectedCountry);
   }, []);
+
+  useEffect(() => {
+    if (selectedCountry) {
+       console.log("")
+    }
+  }, [selectedCountry, dateRange]);
 
   return (
     <div className="App">
       <h1>COVID-19 and Population Dashboard</h1>
+      <div className="date-range-container">
+        <Country countries={countries} onSelect={setSelectedCountry} selectedCountry={selectedCountry} />
+          <div>
+            <label>Filter by Date Range</label>
+            <input type="date" value={dateRange.start} onChange={(e) =>
+              setDateRange({...dateRange, start: e.target.value})
+            }/>
+            {" ~ "}
+            <input type="date" value={dateRange.end} onChange={(e) =>
+              setDateRange({...dateRange, start: e.target.value})
+            }/>
+          </div>
+      </div>
+
     </div>
   );
 }
