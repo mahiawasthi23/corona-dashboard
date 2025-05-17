@@ -19,7 +19,7 @@ const PieChartComponent = ({ data }) => {
 
      return (
     <div style={{ width: "100%", minHeight: "250px"}}>
-      <h3 style={{marginBottom: "5px", marginLeft: "15px" }}>PieChart</h3>
+      <h3 style={{marginBottom: "5px", marginLeft: "25px" }}>PieChart</h3>
       <ResponsiveContainer width="100%" height={250}>
         <PieChart>
           <Pie
