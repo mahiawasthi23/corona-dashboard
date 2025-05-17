@@ -1,12 +1,34 @@
-# React + Vite
+# COVID-19 and Population Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is built using React.js and Vite. It allows users to view COVID-19 data for different countries — including total cases, recoveries, deaths, and population. Users can select a custom date range, and all data is shown using charts and cards.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Select country from a dropdown
+- Choose a custom date range
+- Shows total cases, recoveries, and deaths in cards
+- Line chart displays the trend over time
+- Pie chart shows the proportion of data
+- Works well on both desktop and mobile screens
 
-## Expanding the ESLint configuration
+## Tech Stack Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React.js** – For building the user interface
+- **Vite** – For fast development setup
+- **Axios** – For fetching data from APIs
+- **Recharts** – For showing data in chart form
+- **React-icons** – For using icons in the UI
+- **CSS3** – For styling the app
+
+## APIs Used
+
+- **COVID Data**: From disease.sh API (last 1500 days of data)
+- **Country List & Population**: From restcountries.com API
+
+## How to Run This Project
+
+```bash
+git clone https://github.com/mahiawasthi23/corona-dashboard.git
+cd covid-dashboard
+npm install
+npm run dev
