@@ -1,0 +1,41 @@
+.country-container {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  margin-right: 0;
+  margin-bottom: 20px;
+}
+
+.country-select {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+
+.country-dropdown{
+  width: 100%;
+  padding: 10px 36px 10px 36px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  appearance: none;
+  font-size: 16px;
+  background-color: white;
+}
+
+.icon {
+  position: absolute;
+  pointer-events: none;
+  color: #666;
+}
+
+.search-icon {
+  left: 10px;
+  font-size: 18px;
+}
+
+.dropdown-icon {
+  right: 10px;
+  font-size: 18px;
+}

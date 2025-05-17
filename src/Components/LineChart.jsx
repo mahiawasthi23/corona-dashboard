@@ -33,9 +33,9 @@ const LineChartComponent = ({ data }) => {
     const [hoveredKey, setHoveredKey] = useState("cases");
 
     return (
-    <div style={{ width: "100%", height: 400 }}>
-      <h3 style={{ textAlign: "center", marginBottom: "10px" }}>LineChart</h3>
-      <ResponsiveContainer  width="100%" height="100%">
+    <div style={{ width: "100%",  minHeight:  "280px"}}>
+      <h3 style={{marginBottom: "5px" }}>LineChart</h3>
+      <ResponsiveContainer  width="100%" height={250}>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis

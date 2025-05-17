@@ -1,4 +1,5 @@
 import React from "react";
+import "./Cards.css";
 
 const formatToMillions = (number) => {
   if (number >= 1_000_000) return (number / 1_000_000).toFixed(1) + "M";
@@ -17,20 +18,32 @@ const Cards = ({data}) => {
 
  return (
     <div className="card-container">
-        <div className="card cases">
-            <h2>Total Cases</h2>
-            <p>{formatToMillions(total)}</p>
-            <small>{getPercent(total)}</small>
+        <div className="card card-cases">
+            <div className="cases">
+                <h2>Total Cases</h2>
+                <small>{getPercent(total)}</small>
+            </div>
+            <div className="card-side">
+                <p>{formatToMillions(total)}</p>
+            </div>
         </div>
-        <div className="card recovered">
-            <h2>Total Recovered</h2>
-            <p>{formatToMillions(recovered)}</p>
-            <small>{getPercent(recovered)}</small>
+        <div className="card card-recovered">
+            <div className="recovered">
+                <h2>Recovered</h2>
+                <small>{getPercent(recovered)}</small>
+            </div>
+            <div className="card-side">
+                <p>{formatToMillions(recovered)}</p>
+            </div>
         </div>
-        <div className="card cases">
-            <h2>Total Deaths</h2>
-            <p>{formatToMillions(deaths)}</p>
-            <small>{getPercent(deaths)}</small>
+        <div className="card card-deaths">
+            <div className="deaths">
+                <h2>Deaths</h2>
+                <small>{getPercent(deaths)}</small>
+            </div>
+            <div className="card-side">
+                <p>{formatToMillions(deaths)}</p>
+            </div>
         </div>
     </div>
  )

@@ -1,5 +1,6 @@
 import React from "react";
 import {FiSearch, FiChevronDown} from "react-icons/fi";
+import "./Country.css";
 
 const Country = ({countries, onSelect, selectedCountry}) => {
     const sortedCountries = [...countries].sort((a,b) =>
@@ -7,10 +8,10 @@ const Country = ({countries, onSelect, selectedCountry}) => {
     );
 
     return (
-        <div className="custom-dropdown-container">
-            <div className="custom-select-wrapper">
+        <div className="country-container">
+            <div className="country-select">
                 <FiSearch className="icon search-icon" />
-                 <select onChange={(e) => onSelect(e.target.value)} className="custom-dropdown" value={selectedCountry || ""}>
+                 <select onChange={(e) => onSelect(e.target.value)} className="country-dropdown" value={selectedCountry || ""}>
                  <option value=""disabled hidden>Search Country</option>
                  {sortedCountries.map((country, index) => (
                     <option key={index} value={country.cca2.toLowerCase()}>
@@ -18,6 +19,7 @@ const Country = ({countries, onSelect, selectedCountry}) => {
                     </option>
                  ))}
                  </select>
+                 <FiChevronDown className="icon dropdown-icon" />
             </div>
         </div>
     );

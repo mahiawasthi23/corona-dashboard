@@ -5,6 +5,7 @@ import Cards from "./Components/Cards";
 import PieChartComponent from "./Components/PieChart";
 import LineChartComponent from "./Components/LineChart";
 import axios from "axios";
+import "./App.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -88,11 +89,14 @@ function App() {
 
   return (
     <div className="App">
+      <div className="app-container">
       <h1>COVID-19 and Population Dashboard</h1>
       <div className="date-range-container">
         <Country countries={countries} onSelect={setSelectedCountry} selectedCountry={selectedCountry} />
-          <div>
-            <label>Filter by Date Range</label>
+          <div className="date">
+             <div className="date-range">
+               <label>Filter by Date Range</label>
+            </div>
             <input type="date" value={dateRange.start} onChange={(e) =>
               setDateRange({...dateRange, start: e.target.value})
             }/>
@@ -111,6 +115,7 @@ function App() {
              </div>
            </>
          )}
+         </div>
     </div>
   );
 }
