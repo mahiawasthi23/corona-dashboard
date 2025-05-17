@@ -10,30 +10,24 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f7fa;
   color: #222;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0;  
   overflow-x: hidden;
-  box-sizing: border-box;
 }
 
 .app-container {
-  width: 100%;
-  max-width: 1200px; 
-  padding: 20px;
+  width: 95vw;
+  min-height: 100vh;
+  max-width: 980px;
+  padding: 20px 10px;
   border-radius: 12px;
-  min-height: 100%;
-   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
-
 
 
 .App h1 {
   color: black;
-  margin-bottom: 17px;
+  margin-bottom: 30px;
   font-weight: 700;
 }
 
@@ -41,6 +35,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .date{
@@ -79,7 +74,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .chart-container > * {
@@ -90,12 +85,12 @@
 
 
 @media (max-width: 768px) {
-  .chart-container {
-    flex-direction: column;
-  }
-
   .date-range-container {
     flex-direction: column;
-    align-items: stretch;
+    gap: 10px;
+  }
+  .chart-container {
+    flex-direction: column;
+    gap: 25px;
   }
 }
