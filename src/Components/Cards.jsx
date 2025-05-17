@@ -1,5 +1,11 @@
 import React from "react";
 
+const formatToMillions = (number) => {
+  if (number >= 1_000_000) return (number / 1_000_000).toFixed(1) + "M";
+  if (number >= 1_000) return (number / 1_000).toFixed(1) + "K";
+  return number.toString();
+};
+
 const Cards = ({data}) => {
     const total = data.cases;
     const recovered = data.recovered;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getCountries, getCovidHistory } from "./Api";
 import Country from "./Components/Country";
 import Cards from "./Components/Cards";
+import PieChartComponent from "./Components/PieChart";
 import axios from "axios";
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
 
     const filteredData = formattedData.filter((entry) => {
       const [month, day, year] = entry.date.split("/");
-      const entryDate = new Date(`20${year}-{month.padStart(2, "0")}-{day.padStart(2, "0")}`);
+      const entryDate = new Date(`20${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`);
       const start = new Date(dateRange.start);
       const end = new Date(dateRange.end);
       return entryDate >= start && entryDate <=end;
@@ -46,12 +47,12 @@ function App() {
 
     setChartData(filteredData);
       
-    if(filteredData.lenght > 0) {
+    if(filteredData.length > 0) {
       const total = filteredData.reduce(
         (acc, curr) => {
           acc.cases += curr.cases;
           acc.recovered += curr.recovered;
-          acc.deaths =+ curr.deaths;
+          acc.deaths += curr.deaths;
           return acc;
         },
         {cases: 0, recovered: 0, deaths: 0}
@@ -65,7 +66,7 @@ function App() {
       setCovidData({
         cases: total.cases,
         recovered: total.recovered,
-        deaths: total,deaths,
+        deaths: total.deaths,
         Population: Population,
       });
     } else {
@@ -96,7 +97,7 @@ function App() {
             }/>
             {" ~ "}
             <input type="date" value={dateRange.end} onChange={(e) =>
-              setDateRange({...dateRange, start: e.target.value})
+              setDateRange({...dateRange, end: e.target.value})
             }/>
           </div>
       </div>
@@ -104,7 +105,7 @@ function App() {
            <> 
              <Cards data={covidData} />
              <div className="chart-container">
-               <h>Hello</h>
+                <PieChartComponent data={covidData} />
              </div>
            </>
          )}
