@@ -63,13 +63,13 @@ function App() {
       const PopulationRes = await axios.get(
         `https://restcountries.com/v3.1/alpha/${code}`
       );
-      const Population = PopulationRes.data[0]?.Population || 0;
+      const Population = PopulationRes.data[0]?.population || 0;
 
       setCovidData({
         cases: total.cases,
         recovered: total.recovered,
         deaths: total.deaths,
-        Population: Population,
+        population: Population,
       });
     } else {
       setCovidData(null);
